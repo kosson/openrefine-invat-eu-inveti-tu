@@ -1,0 +1,58 @@
+# Variabile
+
+Variabilele sunt parte componentă a expresiilor GREL.
+
+|numele variabilei|ce reprezintă?|
+|:--|:--|
+|`value`|Reprezintă valoarea din celula din rândul curent de pe coloana de bază; valoarea sa poate fi și `null`|
+|`row`|Reprezintă rândul asupra căruia se fac operațiuni. Această variabilă are drept valoare un obiect a căror proprietăți sunt celulele de pe rând.|
+|`cells`|Reprezintă toate celulele de pe rândul de lucru. Numele coloanelor vor fi cheile proprietăților|
+|`cell`|Reprezintă o celulă pe care se aplică operațiunile. Acestă valoare este un obiect.|
+|`recon`|Reprezintă o valoare de tip obiect asociat unei celule, care a fost returnat ca rezultat al unui serviciu sau furnizor care oferă reconciliere pentru date.|
+|`record`|Reprezintă valoarea uneia sau a mai multor rânduri care au fost grupate împreună pentru a constitui o înregistrare unitară: `record`. Această valoare este un obiect.|
+
+## Rândul - `row`
+
+Un rând sau o linie din fișier care este reprezentat ca un obiect. Proprietățile acestui obiect pot fi accesate cu operatorul punct sau cu paranteze pătrate la fel ca sintaxa de acces a proprietăților din obiectele JavaScript: `row.index` sa `row.["index"]`.
+
+### `row.index`
+
+Este indexul rândului care va fi prelucrat. Indexul rândurilor în General Refine Expression Language pornește de la valoarea 0.
+
+### `row.cells`
+
+Are drept valoare toate celulele rândului.
+
+### `row.columnNames`
+
+Oferă toate numele coloanelor rândului de lucru.
+
+### `row.starred`
+
+Are valoare boolean (true/false) și indică dacă rândului i s-a activat o steluță sau nu.
+
+### `row.flagged`
+
+Are valoare boolean (true/false) și indică dacă rândului i s-a activat fanionul sau nu.
+
+### `row.record`
+
+Este un obiect care, de fapt, este reprezentarea întregului rând.
+
+## Celulele - `cells`
+
+Acesta este un obiect care poate fi accesat și ca `row.cells`. Proprietățile sale sunt tot atâtea câte coloane există iar numele cheilor sunt numele coloanelor.
+
+Accesarea unei singure proprietăți, precum în cazul: `cells.NrInventar`, are drept efect returnarea unui obiect cu toate proprietățile aferente celulei adresate din rândul de lucru.
+Aici fii foarte atent pentru că în cazul în care denumirea coloanei este formată din mai multe cuvinte delimitate de spații, metoda pentru a accesa proprietatea va fi cea cu paranteze drepte: `cells["Nr Inventar"]`.
+
+În cazul în care dorești să accesezi valoarea celulei aferente coloanei, vei folosi proprietatea `value` apelată prin sintaxă cu punct: `cells["Nr Inventar"].value`.
+
+Când dorești să editezi toate valorile de pe o anumită coloană, pur și simplu introduci numele coloanei între ghilimele: "Nr Inventar". În acest moment, toate celulele de pe coloana aleasă vor fi afectate de orice transformare faci. Acest lucru poate fi realizat și prin folosirea instrumentului grafic `Facets` din interfața grafică.
+
+## Celulă - `cell`
+
+Obiectul `cell` are doar două proprietăți:
+
+- `cell.value`, care oferă valoarea din respectiva celulă. Acestă valoare la rândul ei poate fi o valoare boolean, un șir de caractere, valoarea `null` sau o eroare.
+- `cell.recon` este un obiect care conține rezultatul obținut din reconcilierea datelor pentru acea celulă.

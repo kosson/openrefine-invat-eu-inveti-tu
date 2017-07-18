@@ -33,7 +33,7 @@ Trebuie să completez aici cu câteva informații importante. Un șir de caracte
 
 Te vei întreba care este avantajul? Acesta este că folosindu-te de array, ai acces la fiecare cuvânt în parte din șir apelându-l după indexul alocat automat începând cu 0. Cool, nu?
 
-Am lămurit care-i treaba cu array-ul. Trebuie să completez că `join(", ")` este o funcție care face operețiunea inversă. Adică preia un array și unește într-un șir de caractere toate valorile din array, pe care le aranjează într-o succesiune delimitată de un caracter menționat ca argument al funcției între ghilimele.
+Am lămurit care-i treaba cu array-ul. Trebuie să completez că `join(", ")` este o funcție care face operațiunea inversă. Adică preia un array și unește într-un șir de caractere toate valorile din array, pe care le aranjează într-o succesiune delimitată de un caracter menționat ca argument al funcției între ghilimele.
 
 Hai să facem uz de avantajele pe care le expune lucrul cu un array și să extragem doar un fragment din șirul de caractere pe care-l avem ca valoare într-o celulă: `value.split(" ")[0]`.
 

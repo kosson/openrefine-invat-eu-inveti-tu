@@ -6,10 +6,6 @@ General Refine Expression Language este limbajul prin care comunici intențiile 
 
 O expresie va fi aplicată tuturor rândurilor din set pentru o anumită valoare poziționată pe o anumită coloană.
 
-## Structura datelor
-
-TODO: Completează și fă o anatomie a modalităților de reprezentare a datelor într-un set așa cum le folosește OpenRefine. [\[ILUSTREZĂ!]]
-
 ## Valorile
 
 Valorile sunt conținutul celulelor intr-un rând. Aceste valori pot fi accesate repetitiv fiecare dintre ele pentru întreg setul de date. Acest lucru se va face creându-se o expresie de prelucrare pentru valoare. Valoare (`value`) este ca un identificator pentru o variabilă, care se va modifica pe măsură ce se va parcurge întreg setul de date analizându-se rând după rând.

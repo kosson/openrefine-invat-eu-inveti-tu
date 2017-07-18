@@ -96,8 +96,8 @@ Acesta este un obiect care reprezintă potrivirea pentru valoarea celulei și ar
 
 - `.typeMatch` (valoare boolean)
 - `.nameMatch` (valoare boolean)
-- `.nameLevenshtein`
-- `.nameWordDistance`
+- `.nameLevenshtein` (o valoare numerică care indică cât de aproape este candidatul de cea mai bună variantă care merge cu valoarea din celulă. Un număr mai mare indică o distanță mai mare).
+- `.nameWordDistance` (valoarea numerică a distanței de potrivire cu valoarea celulei).
 
 ### Un obiect care include trei candidați posibili: `recon.candidates`
 
@@ -110,8 +110,42 @@ Acest obiect asemănător cu array-urile are următoarele proprietăți:
 
 Documentația oferă următorul exemplu de unificare a conținutului celor trei candidați într-unul singur: `forEach(cell.recon.candidates,v,v.id).join(",")`.
 
-Să presupunem că dorești să accesezi cel mai bun candidat pentru valoarea unei celule. Ai urmtoarele expresii echivalente de lucru:
+Să presupunem că dorești să accesezi cel mai bun candidat pentru valoarea unei celule. Ai următoarele expresii echivalente de lucru:
 
-- recon.best.id
-- cell.recon.best.id
-- row.cells["nume coloană"].recon.best.id
+- `recon.best.id`
+- `cell.recon.best.id`
+- `row.cells["nume coloană"].recon.best.id`
+
+## Înregistrare - `record`
+
+Acesta este un obiect care cuprinde unu sau mai multe rânduri, care sunt grupate împreună.
+
+Un exemplu de grupare:
+
+|index|autor|titlu|an|
+|:-|:-|:-|:-|
+|1|Gib Mihăiescu|Grandiflora|1928|
+|2||Rusoaica|1933|
+|3||Donna Alba|1935|
+|4|Mateiu Caragiale|Craii de Curtea-Veche|1928|
+|5||Remember|1921|
+
+Accesarea membrilor acestui obiect se poate face prin intermediul celor două sintaxe posibile: cea cu punct și cu paranteze pătrate: `record.autor` sau `record["titlu"]`.
+
+Să vedem ce putem accesa ca valori apelând pproprietățile unui obiect `record`. Considerând exemplul oferit mai sus putem accesa următoarele informații.
+
+### Indexul înregistrării - `record index`
+
+O înregistrare are structurate intern informațiile după un index care pornește de la 0. Folosind `record index`, vom putea afla la ce poziție din index se face prelucrarea datelor.
+
+### Celulele înregistrării - `record.cells`
+
+Este un array cu toate celulele. Pentru înregistrarea de mai sus `row.record.cells.titlu.value` aplicată pe al doilea rând (primul rând este cel al numelor de coloană, de regulă), va returna un array cu [`"Grandiflora", "Rusoaica", "Donna Alba"]`.
+
+### Indexul primului rând - `record.fromRowIndex`
+
+Folosind această proprietate afli valoarea primului index al înregistrării.
+
+### Indexului ultimului rând al înregistrării - `record.toRowindex`
+
+Afli valoarea indexului ultimului element din înregistrare.

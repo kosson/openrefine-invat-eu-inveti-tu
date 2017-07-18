@@ -15,6 +15,8 @@ Să presupunem că avem următorul set:
 |1|Gib Mihăiescu|Grandiflora|1928|
 |2|Mateiu Caragiale|Craii de Curtea-Veche|1928|
 
+Acest set a fost constituit anterior. Poți să-l reconstuiești simplu deschizând LibreOffice Calc, introduci datele și salvezi ca CSV. Apoi deschizi OpenRefine și faci un proiect încărcând setul.
+
 În OpenRefine arată astfel, după ce ai creat proiectul.
 
 ![](Set2GibSiMateiu.png)

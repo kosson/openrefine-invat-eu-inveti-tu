@@ -56,3 +56,62 @@ Obiectul `cell` are doar două proprietăți:
 
 - `cell.value`, care oferă valoarea din respectiva celulă. Acestă valoare la rândul ei poate fi o valoare boolean, un șir de caractere, valoarea `null` sau o eroare.
 - `cell.recon` este un obiect care conține rezultatul obținut din reconcilierea datelor pentru acea celulă.
+
+## Reconciliere - `recon`
+
+Un obiect care reprezintă un rezultat al concilierii de date are următoarele proprietăți, care descriu și oferă valori rezultate direct din procesul de reconciliere.
+
+### Verdictul reconcilierii: `recon.judgment`
+
+Această proprietate este un șir de caractere care poate fi una dintre următoarele variante: "matched", "new" și "none".
+
+### O combinare reușită: `recon.matched`
+
+Este o valoare boolean, care indică prin true/false dacă verdictul reconcilierii este "matched".
+
+### Candidatul indicat pentru potrivire cu valoarea celulei: `recon.match`
+
+Poate avea valoarea `null`, dacă nu s-a găsit niciun candidat pentru o potrivire cu valoarea celulei sau chiar valoarea candidatului în cazul în care există o potrivire.
+
+În cazul în care există o potrivire, aceasta este accesibilă ca un obiect iar acest obiect are următoarele proprietăți la rândul său:
+
+- `.id`
+- `.name`
+- `.type`
+
+### Cel mai bun candidat din câți există - `recon.best`
+
+Această proprietate poate avea valoarea `null` în cazul în care nu există sau un obiect reprezentând cea mai bună potrivire posibilă cu valaorea din celulă care s-a putut face.
+
+Acest obiect rezultate, dacă există poate avea la rândul său următoarele proprietăți:
+
+- `.id`
+- `.name`
+- `.type`
+- `.score`
+
+### Obiectul candidatului expune caracteristicile sale prin `recon.features`
+
+Acesta este un obiect care reprezintă potrivirea pentru valoarea celulei și are următoarele proprietăți:
+
+- `.typeMatch` (valoare boolean)
+- `.nameMatch` (valoare boolean)
+- `.nameLevenshtein`
+- `.nameWordDistance`
+
+### Un obiect care include trei candidați posibili: `recon.candidates`
+
+Acest obiect asemănător cu array-urile are următoarele proprietăți:
+
+- `.id`
+- `.name`
+- `.type`
+- `.score`
+
+Documentația oferă următorul exemplu de unificare a conținutului celor trei candidați într-unul singur: `forEach(cell.recon.candidates,v,v.id).join(",")`.
+
+Să presupunem că dorești să accesezi cel mai bun candidat pentru valoarea unei celule. Ai urmtoarele expresii echivalente de lucru:
+
+- recon.best.id
+- cell.recon.best.id
+- row.cells["nume coloană"].recon.best.id

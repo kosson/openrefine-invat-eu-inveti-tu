@@ -2,7 +2,7 @@
 
 În GREL (General Refine Expression Language), expresiile sunt folosite pentru a transforma și pentru a crea date pe baza celor existente.
 
-Expresia consituită va fi aplicată tuturor rândurilor din set.
+O expresie va fi aplicată tuturor rândurilor din set pentru o anumită valoare poziționată pe o anumită coloană.
 
 ## Valorile
 

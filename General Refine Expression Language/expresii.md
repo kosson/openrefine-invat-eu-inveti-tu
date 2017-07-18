@@ -6,6 +6,10 @@ General Refine Expression Language este limbajul prin care comunici intențiile 
 
 O expresie va fi aplicată tuturor rândurilor din set pentru o anumită valoare poziționată pe o anumită coloană.
 
+## Structura datelor
+
+TODO: Completează și fă o anatomie a modalităților de reprezentare a datelor într-un set așa cum le folosește OpenRefine. [\[ILUSTREZĂ!]]
+
 ## Valorile
 
 Valorile sunt conținutul celulelor intr-un rând. Aceste valori pot fi accesate repetitiv fiecare dintre ele pentru întreg setul de date. Acest lucru se va face creându-se o expresie de prelucrare pentru valoare. Valoare (`value`) este ca un identificator pentru o variabilă, care se va modifica pe măsură ce se va parcurge întreg setul de date analizându-se rând după rând.
@@ -27,7 +31,7 @@ Folosind Transform (Edit->Transform) putem modela conținutul celulelor de pe o 
 
 ![](Coloana-EditCells-Transform-Gib-Mihaiu.png)
 
-Trebuie să completez aici cu câteva informații importante. Un șir de caractere asupra căruia i se aplică o funcție `split` va fi spart după caracterul sau secvența de caractere menționată ca argument al funcției split într-un array (valori indexate într-o structură de date container care se numește array și care le ține precum un șirag de mărgele). Dacă în cazul `Gib Mihăiescu` aveam șirul unitar, ca valoare șir în sine, imediat după aplicarea funcției split(" "), care menționează spațiul ca fiind caracterul după care se va face fragmentarea, va rezulta o structură de date indexată (array): `["Gib", "Mihăiescu"]`.
+Trebuie să completez aici cu câteva informații importante. Un șir de caractere asupra căruia i se aplică o funcție `split` va fi „spart” după caracterul sau secvența de caractere menționată ca argument al funcției split într-un array (valori indexate într-o structură de date container care se numește array și care le ține precum un șirag de mărgele). Dacă în cazul `Gib Mihăiescu` aveam șirul unitar, ca valoare șir în sine, imediat după aplicarea funcției split(" "), care menționează spațiul ca fiind caracterul după care se va face fragmentarea, va rezulta o structură de date indexată (array): `["Gib", "Mihăiescu"]`.
 
 ![](Autor-EditCells-Transform-split-join.png)
 
@@ -38,3 +42,9 @@ Am lămurit care-i treaba cu array-ul. Trebuie să completez că `join(", ")` es
 Hai să facem uz de avantajele pe care le expune lucrul cu un array și să extragem doar un fragment din șirul de caractere pe care-l avem ca valoare într-o celulă: `value.split(" ")[0]`.
 
 Rezultatul este că obținem doar un singur cuvânt reducând astfel un șir întreg doar la un singur fragment util.
+
+## Cunoștințe de bază
+
+Am menționat faptul că OpenRefine folosește o sintaxă care seamănă cu cea a JavaScript-ului. Cei care cunosc JavaScript și ceva Python, nu vor avea probleme să înțeleagă expresiile folosite pentru a modela datele. Pentru cei care nu cunosc programare, nu aveți a vă teme de nimic. Voi încerca să explic noțiunile cu care lucrăm și tot ceea ce vom face va fi bogat ilustrat pentru a compensa în mod util.
+
+Pentru avea cel mai bun start, vom arunca o privire căre valorile pe care le vom manipula.

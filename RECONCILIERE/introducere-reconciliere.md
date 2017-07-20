@@ -18,7 +18,7 @@ Universitatea „Alexandru Ioan Cuza” din Iași,"Bulevardul Carol I, Nr.11, 70
 
 Pe coloana „Numele universității” vom acționa următorii pași: Reconcile - Start reconciling...
 
-Vom avea acces în acest moment la serviciul de reconsiliere pus la dispoziție de Wikidata pe care-l și alegem, de fapt. Vom vedea în panoul care tocmai s-a deschis că entitățile alăturate automat de valorile de pe coloana numelui universității, sunt codate conform unei schme de identificatori proprii Wikidata.
+Vom avea acces în acest moment la serviciul de reconsiliere pus la dispoziție de Wikidata pe care-l și alegem, de fapt. Vom vedea în panoul care tocmai s-a deschis că entitățile alăturate automat de valorile de pe coloana numelui universității, sunt codate conform unei scheme de identificatori proprii Wikidata.
 
 În cazul nostru, serviciul de reconciliere a tras concluzia că despre universități este vorba pentru coloana în cauză și din vocabularul Wikidata și a făcut o legătură la entitățile de tip „university” având identificator Q3918 („Reconcile each cell to an entity of one of these types:”). Aceasta este oferta automată a serviciului, dar se poate interveni atunci când se dorește să se facă reconcilierea după o altă entitate a Wikidata. În acest sens, vei opta pentru „reconcile against type” de mai jos iar în câmpul alăturat, vei introduce numele entității pentru care dorești ca serviciul să facă potriviri în baza de date.
 
@@ -31,3 +31,9 @@ Aceste opțiuni nu au fost folosite în acest prim exemplu simplu.
 Rezultatul unei reconcilieri simple indică faptul că rezultatele oferite drept alternativă, reprezintă varianta în limba engleză.
 
 ![](reconciliereRezultatDupaNumeleUniversitatii.png)
+
+TODO: Exemplu de geolocalizare pentru adresele din bază.
+
+## Surse de date pentru reconciliere
+
+http://okfnlabs.org/reconcile-csv/

@@ -6,4 +6,4 @@ Un repo cu materiale pentru a învăța OpenRefine. Intenția este de a constitu
 
 Sper să vă ajute ca instrument de lucru în „exploatarea datelor”.
 
-Trag speanța să transform materialul într-un manual încet, încet.
+Trag speranța că vom transforma matearialele într-un manual.

@@ -26,6 +26,8 @@ Vom avea acces în acest moment la serviciul de reconsiliere pus la dispoziție 
 
 Ceea ce este vizibil și util totodată este introducere în procedura de reconciliere o altă coloană care oferă încă un indiciu important. Pentru că în cazul nostru avem doar o singură coloană suplimentară, aceasta va fi oferită drept opțiune.
 
+Aceste opțiuni nu au fost folosite în acest prim exemplu simplu.
+
 Rezultatul unei reconcilieri simple indică faptul că rezultatele oferite drept alternativă, reprezintă varianta în limba engleză.
 
 ![](reconciliereRezultatDupaNumeleUniversitatii.png)

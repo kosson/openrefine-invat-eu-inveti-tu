@@ -1,3 +1,6 @@
+----
+version: 3.6
+---
 # Expresii
 
 General Refine Expression Language este limbajul prin care comunici intențiile de modelare a datelor pachetului OpenRefine. GREL este proiectat să semene cu JavaScript. Majoritatea funcțiilor interne din JavaScript vor funcționa fără probleme în GREL. Unele sintaxe seamănă mai degrabă cu Python.
@@ -45,7 +48,93 @@ Am menționat faptul că OpenRefine folosește o sintaxă care seamănă cu cea 
 
 Pentru avea cel mai bun start, vom arunca o privire căre valorile pe care le vom manipula.
 
+## Controale
+
+GREL oferă mecanisme de control pentru a realiza condiții sau looping, dar spre deosebire de funcții, argumentele lor nu sunt evaluate înainte de a fi rulată respectivul control. Un control poate decide care parte a codului poate să o execute și poate să modifice valorile cu care se leagă la mediu.
+
+### if(e, eTrue, eFalse)
+
+Expresia `e` este evaluată la o valoare. Dacă valoarea este `true`, va fi evaluată expresia de la `eTrue` iar rezultatul va fi valoarea întregii expresii `if()`. În caz contrar, este evaluată expresia `eFalse` iar acel rezultat va fi valoarea.
+
+De exemplu:
+- `if("internationalization".length() > 10, "șir de caractere mare", "șir de caractere mic")` va returna valoarea `șir de caractere mare`;
+- `if(mod(37, 2) == 0, "par", "impar")` va returna `impar`.
+
+In exemplu în care este simulat un `switch case`:
+
+```grel
+if(value == 'Place', 'http://www.example.com/Location',
+
+    if(value == 'Person', 'http://www.example.com/Agent',
+
+    if(value == 'Book', 'http://www.example.com/Publication',
+
+null)))
+```
+
+### with(e1, variable v, e2)
+
+Evaluează expresia `e1` apoi atribuie valoarea lui `variable v` și apoi evaluează expresia de la `e2` pentru care returnează rezultatul.
+
+De exemplu:
+
+- `with("european union".split(" "), a, a.length())` pentru care returnează `2`;
+- `with("european union".split(" "), a, forEach(a, v, v.length()))` pentru care returnează `[8, 5]`;
+- `with("european union".split(" "), a, forEach(a, v, v.length()).sum() / a.length())` pentru care returnează `6.5`.
+
+### filter(e1, v, e test)
+
+Evaluează expresia `e1` la un array pe care îl va considera date de lucru. Apoi, pentru fiecare element va trimite valoarea în `v`, va evalua expresia `e test` care trebuie să returneze un `boolean` la final. Dacă valoarea este `true`, va reține (face push) valoarea lui `v` în array-ul care rezultă.
+
+De exemplu:
+
+- `filter([ 3, 4, 8, 7, 9 ], v, mod(v, 2) == 1)` returnează array-ul `[ 3, 7, 9 ]`.
+
+### forEach(e1, v, e2)
+
+Evaluează expresia `e1` la un array. Apoi, pentru fiecare element al array-ului, va trimite valoarea lui `v`. Se va continua prin evaluarea expresiei `e2` și se va trimite rezultatul (face push) în array-ul care este rezultatul. În cazul în care `e1` este un obiect JSON, `forEach` va itera peste cheile sale. 
+
+Exemplu:
+
+- `forEach([ 3, 4, 8, 7, 9 ], v, mod(v, 2))` returnează array-ul `[ 1, 0, 0, 1, 1 ]`.
+
+
+### forEachIndex(e1, i, v, e2)
+
+Mai întâi este evaluată expresia `e1` care va fi redusă la un array. Apoi, pentru fiecare element, valoarea indexului său va fi trimisă în variabila `i`, iar valoarea în variabila `v`. Apoi, este evaluată expresia `e2` și la final rezultatul este adăugat în array-ul rezultat (se face push).
+
+De exemplu:
+
+- `forEachIndex([ "anne", "ben", "cindy" ], i, v, (i + 1) + ". " + v).join(", ")` a cărui rezultat este array-ul transformat în șir prin aplicarea lui `join`: `1. anne, 2. ben, 3. cindy`.
+
+### forRange(n from, n to, n step, v, e)
+
+Funcția iterează valoarea care este dată lui `v` începând cu `n from` în pași de dimensiunea specificată la `n step` cu limită setată (*până la*) prin valoarea lui `n to`. La fiecare iterație va evalua expresia `e` și va introduce rezultatul  în array-ul care se formează ca valoare returnată.
+
+### forNonBlank(e, v, eNonBlank, eBlank)
+
+Evaluează expresia de la `e`. Dacă nu este o valoare blank, `forNonBlank()` va trimite valoarea în variabila `v`, va urma evaluarea expresiei `eNonBlank` și va returna rezultatul. În caz contrar, va fi evaluată expresia de la `eBlank` și va returna acel rezultat.
+
+Spre deosebire de alte funcții GREL care încep cu *for* aceasta nu este iterativă. Este doar o sintaxă prescurtată pentru a ajunge la același rezultat prin utilizarea funcției `isNonBlank()` într-o expresie `if`.
+
+
+### isBlank(e), isNonBlank(e), isNull(e), isNotNull(e), isNumeric(e), isError(e)
+
+Evaluează expresia `e` și returnează un boolean. Adu-ți mereu aminte că acestea sunt controale și nu pot fi utilizare ca metode; `e.isX()` nu va funcționa.
+
+De exemplu:
+
+- `isBlank("abc")` returnează `false`;
+- `isNonBlank("abc")` returnează `true`;
+- `isNull("abc")` returnează `false`;
+- `isNotNull("abc")` returnează `true`;
+- `isNumeric(2)` returnează `true`;
+- `isError(1)` returnează `false`;
+- `isError("abc")` returnează `false`;
+- `isError(1 / 0)` returnează `true`
+
 ## Resurse
 
-### Video
-https://www.youtube.com/watch?v=wGVtycv3SS0
+- Video
+	- https://www.youtube.com/watch?v=wGVtycv3SS0
+	- [General Refine Expression Language](https://openrefine.org/docs/manual/grel)

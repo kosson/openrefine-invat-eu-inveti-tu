@@ -6,10 +6,12 @@ Variabilele sunt parte componentă a expresiilor GREL.
 |:--|:--|
 |`value`|Reprezintă valoarea din celula din rândul curent de pe coloana de bază; valoarea sa poate fi și `null`|
 |`row`|Reprezintă rândul asupra căruia se fac operațiuni. Această variabilă are drept valoare un obiect a căror proprietăți sunt celulele de pe rând.|
+|`row.record`|Reprezintă valoarea uneia sau a mai multor rânduri care au fost grupate împreună pentru a constitui o înregistrare unitară: `record`. Această valoare este un obiect.|
 |`cells`|Reprezintă toate celulele de pe rândul de lucru. Numele coloanelor vor fi cheile proprietăților|
 |`cell`|Reprezintă o celulă pe care se aplică operațiunile. Acestă valoare este un obiect.|
-|`recon`|Reprezintă o valoare de tip obiect asociat unei celule, care a fost returnat ca rezultat al unui serviciu sau furnizor care oferă reconciliere pentru date.|
-|`record`|Reprezintă valoarea uneia sau a mai multor rânduri care au fost grupate împreună pentru a constitui o înregistrare unitară: `record`. Această valoare este un obiect.|
+|`cell.recon`|Informație privind reconcilierea făcută asupra celulei ce a venit de la un serviciu de reconciliere sau de la un furnizor care oferă reconciliere pentru date.|
+|`rowIndex`|Valoarea indexului pentru rândul curent pe care se operează|
+|`columnName`|Numele coloanei pentru celula în care operezi curent. Este returnată ca șir de caractere|
 
 ## Rândul - `row`
 
@@ -25,7 +27,7 @@ Are drept valoare toate celulele rândului.
 
 ### `row.columnNames`
 
-Oferă toate numele coloanelor rândului de lucru.
+Oferă toate numele coloanelor rândului de lucru într-un array în care fiecare element este valoarea fiecărei celule din rând. O coloană poate fi apelată individual printr-o expresie de tipul `row.columnNames[2]`.
 
 ### `row.starred`
 
@@ -37,7 +39,7 @@ Are valoare boolean (true/false) și indică dacă rândului i s-a activat fanio
 
 ### `row.record`
 
-Este un obiect care, de fapt, este reprezentarea întregului rând.
+Este un obiect de tip `record` care, de fapt, este reprezentarea întregului rând.
 
 ## Celulele - `cells`
 

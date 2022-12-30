@@ -46,7 +46,7 @@ Rezultatul este că obținem doar un singur cuvânt reducând astfel un șir în
 
 Am menționat faptul că OpenRefine folosește o sintaxă care seamănă cu cea a JavaScript-ului. Cei care cunosc JavaScript și ceva Python, nu vor avea probleme să înțeleagă expresiile folosite pentru a modela datele. Pentru cei care nu cunosc programare, nu aveți a vă teme de nimic. Voi încerca să explic noțiunile cu care lucrăm și tot ceea ce vom face va fi bogat ilustrat pentru a compensa în mod util.
 
-Pentru avea cel mai bun start, vom arunca o privire căre valorile pe care le vom manipula.
+Pentru avea cel mai bun start, vom arunca o privire către valorile pe care le vom manipula.
 
 ## Controale
 
@@ -137,4 +137,6 @@ De exemplu:
 
 - Video
 	- https://www.youtube.com/watch?v=wGVtycv3SS0
-	- [General Refine Expression Language](https://openrefine.org/docs/manual/grel)
+	
+- [General Refine Expression Language](https://openrefine.org/docs/manual/grel)
+- [Library Carpentry: OpenRefine](https://librarycarpentry.org/lc-open-refine/)

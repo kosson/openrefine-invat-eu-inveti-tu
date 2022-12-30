@@ -265,6 +265,8 @@ Ia orice valoare (string, number, date, boolean, error, null) și returnează o 
 
 ### cross(cell, s projectName (optional), s columnName (optional))
 
+https://groups.google.com/g/openrefine/c/unN6dQsyYUs
+
 ## Resurse
 
 - [GREL functions | openrefine.org/docs](https://openrefine.org/docs/manual/grelfunctions)
